@@ -26,19 +26,28 @@
 // -3 * 104 <= nums[i] <= 3 * 104
 // Each element in the array appears twice except for one element which appears only once.
 
-var singleNumber = function (nums) {
-  let hash = {};
+// var singleNumber = function (nums) {
+//   let hash = {};
 
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!hash[nums[i]]) {
+//       hash[nums[i]] = 1;
+//     } else {
+//       hash[nums[i]]++;
+//     }
+//   }
+//   for (let i = 0; i < nums.length; i++) {
+//     if (hash[nums[i]] == 1) {
+//       return nums[i];
+//     }
+//   }
+// };
+
+//More optimal solution
+var singleNumber = function (nums) {
+  let xor = 0;
   for (let i = 0; i < nums.length; i++) {
-    if (!hash[nums[i]]) {
-      hash[nums[i]] = 1;
-    } else {
-      hash[nums[i]]++;
-    }
+    xor = xor ^ nums[i];
   }
-  for (let i = 0; i < nums.length; i++) {
-    if (hash[nums[i]] == 1) {
-      return nums[i];
-    }
-  }
+  return xor;
 };
