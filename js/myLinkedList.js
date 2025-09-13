@@ -15,7 +15,7 @@ MyLinkedList.prototype.get = function (index) {
   if (index < 0 || index >= this.size) return -1;
   let curr = this.head;
   for (let i = 0; i < index; i++) curr = curr.next;
-  return curr, val;
+  return curr.val;
 };
 
 /**
@@ -83,7 +83,20 @@ MyLinkedList.prototype.addAtIndex = function (index, val) {
  * @param {number} index
  * @return {void}
  */
-MyLinkedList.prototype.deleteAtIndex = function (index) {};
+MyLinkedList.prototype.deleteAtIndex = function (index) {
+  let curr = this.head;
+  if (index < 0 || index >= this.size) return;
+  if (index === 0) {
+    this.head = this.head.next;
+  } else {
+    for (let i = 0; i < index - 1; i++) {
+      curr = curr.next;
+    }
+    curr.next = curr.next.next;
+  }
+
+  this.size--;
+};
 
 /**
  * Your MyLinkedList object will be instantiated and called as such:
