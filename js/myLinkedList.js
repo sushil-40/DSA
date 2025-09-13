@@ -22,7 +22,11 @@ MyLinkedList.prototype.get = function (index) {
  * @param {number} val
  * @return {void}
  */
-MyLinkedList.prototype.addAtHead = function (val) {};
+MyLinkedList.prototype.addAtHead = function (val) {
+  let newNode = new Node(val);
+  newNode.next = this.head;
+  this.size++;
+};
 
 /**
  * @param {number} val
