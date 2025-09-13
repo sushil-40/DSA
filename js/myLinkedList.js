@@ -53,7 +53,31 @@ MyLinkedList.prototype.addAtTail = function (val) {
  * @param {number} val
  * @return {void}
  */
-MyLinkedList.prototype.addAtIndex = function (index, val) {};
+MyLinkedList.prototype.addAtIndex = function (index, val) {
+  // let curr = this.head;
+  // let newNode = new Node(val);
+  // for (let i = 0; i <= index; i++) {
+  //   if (i === index) {
+  //     curr.next = newNode;
+  //     this.size++;
+  //   }
+  //   curr = curr.next;
+  // }
+  let newNode = new Node(val);
+  if (index == 0) {
+    this.addAtHead(val);
+    return;
+  } else if (index === this.size) {
+    this.addAtTail(val);
+    return;
+  }
+  let curr = this.head;
+  for (let i = 0; i < index - 1; i++) {
+    curr = curr.next;
+  }
+  newNode.next = curr.next;
+  curr.next = newNode;
+};
 
 /**
  * @param {number} index
